@@ -1,0 +1,28 @@
+{
+  "type": "module",
+  "name": "api.hube.co.vi",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thaihiepnguyen/api.hube.co.vi.git"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "team11",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thaihiepnguyen/api.hube.co.vi/issues"
+  },
+  "homepage": "https://github.com/thaihiepnguyen/api.hube.co.vi#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
