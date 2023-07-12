@@ -5,9 +5,9 @@ import mongoose from "mongoose";
 import userController from "./controllers/user.controller.js";
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import authMiddleware from "./middlewares/auth.middleware.js";
-import jwt from "jsonwebtoken";
 import userRoute from "./routes/user.route.js";
+import morgan from 'morgan';
+import categoryRoute from "./routes/category.route.js";
 
 const PORT = process.env.PORT || 3002
 
@@ -17,17 +17,15 @@ app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(morgan('combined'));
 
-app.get('/', authMiddleware.authenticate, cors(), (req, res) => {
-    const token = req.cookies.access_token;
-    const tokenEncrypt = jwt.verify(token, process.env.ACCESS_TOKEN);
-    res.send({
-        tokenEncrypt
-    });
+app.get('/', (req, res) => {
+    res.send({message: 'success'});
 })
 app.post('/sign-up', userController.register);
 app.post('/login', userController.login);
 app.use('/user', userRoute);
+app.use('/categories', categoryRoute);
 
 connectDB();
 mongoose.connection.once('open', () => {

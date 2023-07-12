@@ -27,7 +27,7 @@ export default {
 
     res.json({message: "register successfully"});
   },
-  login: async  (req, res) => {
+  login: async (req, res) => {
     const { email, password } = req.body;
     const userExists = await userService.findUserByEmail(email);
 
