@@ -1,13 +1,13 @@
 import express from 'express'
 import connectDB from './configs/db.js';
 import 'dotenv/config'
-import mongoose from "mongoose";
-import userController from "./controllers/user.controller.js";
+import mongoose from 'mongoose';
+import userController from './controllers/user.controller.js';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import userRoute from "./routes/user.route.js";
+import userRoute from './routes/user.route.js';
 import morgan from 'morgan';
-import categoryRoute from "./routes/category.route.js";
+import categoryRoute from './routes/category.route.js';
 
 const PORT = process.env.PORT || 3002
 
