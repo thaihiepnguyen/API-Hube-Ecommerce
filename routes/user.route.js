@@ -7,6 +7,7 @@ router.get('/', authMiddleware.authenticate, async (req, res) => {
 
   const userEncrypt = await userService.findUserById(userId);
   return res.send({
+    userId,
     email: userEncrypt.email,
     fullname: userEncrypt.fullname,
   });
