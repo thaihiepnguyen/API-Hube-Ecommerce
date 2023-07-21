@@ -8,6 +8,11 @@ export default {
     return await UserModel.findOne({email});
   },
   findUserById: async (id) => {
-    return await UserModel.findById(id);
+    const user = await UserModel.findById(id);
+    user.password = undefined;
+    return user;
+  },
+  findAllUsers: async () => {
+    return await UserModel.find({}, {fullname: 1, email: 1, age: 1, address: 1});
   }
 }

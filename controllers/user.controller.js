@@ -45,5 +45,17 @@ export default {
       })
       .status(200)
       .json({ token: accessToken });
+  },
+  getAllUsers: async (req, res) => {
+    const users = await userService.findAllUsers();
+
+    if (!users) return res.status(400).json({ message: 'Can not get users'})
+
+    return res.status(200).send(users);
+  },
+  getUserById: async (req, res) => {
+    const userId = req.params.id;
+    const user = await userService.findUserById(userId);
+    return res.send(user);
   }
 }
