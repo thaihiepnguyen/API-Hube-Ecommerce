@@ -8,8 +8,8 @@ import cookieParser from 'cookie-parser';
 import userRoute from './routes/user.route.js';
 import morgan from 'morgan';
 import categoryRoute from './routes/category.route.js';
-import couponModel from "./models/coupon.model.js";
 import couponRouter from "./routes/coupon.router.js";
+import notificationRoute from "./routes/notification.route.js";
 
 const PORT = process.env.PORT || 3002
 
@@ -29,6 +29,7 @@ app.post('/login', userController.login);
 app.use('/user', userRoute);
 app.use('/categories', categoryRoute);
 app.use('/coupons', couponRouter);
+app.use('/noti', notificationRoute);
 
 connectDB();
 mongoose.connection.once('open', () => {
