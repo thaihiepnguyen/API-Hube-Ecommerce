@@ -10,6 +10,7 @@ import morgan from 'morgan';
 import categoryRoute from './routes/category.route.js';
 import couponRouter from "./routes/coupon.router.js";
 import notificationRoute from "./routes/notification.route.js";
+import productRoute from "./routes/product.route.js";
 
 const PORT = process.env.PORT || 3002
 
@@ -30,6 +31,7 @@ app.use('/user', userRoute);
 app.use('/categories', categoryRoute);
 app.use('/coupons', couponRouter);
 app.use('/noti', notificationRoute);
+app.use('/products', productRoute);
 
 connectDB();
 mongoose.connection.once('open', () => {

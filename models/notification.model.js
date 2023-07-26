@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const notificationSchema = mongoose.Schema({
+const NotificationSchema = mongoose.Schema({
     noti_template: {
       type: String,
     },
@@ -11,4 +11,4 @@ const notificationSchema = mongoose.Schema({
   { timestamps: true }
 )
 
-export default mongoose.model('Notification', notificationSchema, 'notification_templates');
+export default mongoose.model('Notification', NotificationSchema, 'notification_templates');
