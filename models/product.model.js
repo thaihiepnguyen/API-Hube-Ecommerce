@@ -27,6 +27,13 @@ const productSchema = mongoose.Schema({
     catId: {
       type: Object,
       required: [true, 'Please add an address']
+    },
+    description: {
+      type: Object,
+      required: [true, 'Please add an description']
+    },
+    images: {
+      type: Array,
     }
   },
   { timestamps: true }
