@@ -12,6 +12,11 @@ import couponRouter from "./routes/coupon.router.js";
 import notificationRoute from "./routes/notification.route.js";
 import productRoute from "./routes/product.route.js";
 import shopRoute from "./routes/shop.route.js";
+import path from 'path';
+import { fileURLToPath } from 'url';
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3002
 
@@ -34,6 +39,7 @@ app.use('/coupons', couponRouter);
 app.use('/noti', notificationRoute);
 app.use('/products', productRoute);
 app.use('/shop', shopRoute);
+app.use('/static', express.static(__dirname + '/public'));
 
 connectDB();
 mongoose.connection.once('open', () => {
