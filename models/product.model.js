@@ -34,6 +34,10 @@ const productSchema = mongoose.Schema({
     },
     images: {
       type: Array,
+    },
+    shopInfo: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'shops',
     }
   },
   { timestamps: true }

@@ -15,5 +15,13 @@ export default {
     product["_doc"].category = category;
 
     return res.status(200).send(product);
+  },
+  getProductOrderByPrice: async (req, res) => {
+    const products = await ProductService.findProductOrderByPrice();
+    return res.status(200).send(products)
+  },
+  getProductHistory: async (req, res) => {
+    const products = await ProductService.findProductHistory();
+    return res.status(200).send(products)
   }
 }
