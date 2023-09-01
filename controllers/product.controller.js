@@ -27,5 +27,9 @@ export default {
   getProductSale: async (req, res) => {
     const products = await ProductService.findProductSale();
     return res.status(200).send(products)
+  },
+  getProductFavorite: async (req, res) => {
+    const products = await ProductService.findProductFavorite();
+    return res.status(200).send(products)
   }
 }

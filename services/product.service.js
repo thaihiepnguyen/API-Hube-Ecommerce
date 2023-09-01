@@ -40,6 +40,18 @@ export default {
       }
     ]).limit(4);
   },
+  findProductFavorite: async () => {
+    return await ProductModel.aggregate([
+      {
+        $lookup: {
+          from: 'shops',
+          localField: 'shopId',
+          foreignField: '_id',
+          as: 'shopInfo'
+        }
+      }
+    ]).limit(8);
+  },
   findProductSale: async  () => {
     return await ProductModel.aggregate([
       {
