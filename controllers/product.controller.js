@@ -23,5 +23,9 @@ export default {
   getProductHistory: async (req, res) => {
     const products = await ProductService.findProductHistory();
     return res.status(200).send(products)
+  },
+  getProductSale: async (req, res) => {
+    const products = await ProductService.findProductSale();
+    return res.status(200).send(products)
   }
 }

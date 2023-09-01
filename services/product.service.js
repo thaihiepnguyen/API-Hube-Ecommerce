@@ -1,5 +1,4 @@
 import ProductModel from "../models/product.model.js";
-import categoryService from "./category.service.js";
 
 export default {
   findAllProducts: async () => {
@@ -15,19 +14,42 @@ export default {
     ]);
   },
   findProductById: async (id) => {
-    const product = await ProductModel.findOne({_id: id});
-    return product;
+    return await ProductModel.findOne({_id: id});
   },
   findProductOrderByPrice: async () => {
-    return await ProductModel.find({}, null, {
-      sort: {
-        price: -1
+    return await ProductModel.aggregate([
+      {
+        $lookup: {
+          from: 'shops',
+          localField: 'shopId',
+          foreignField: '_id',
+          as: 'shopInfo'
+        }
       }
-    })
+    ]).sort({price: -1});
   },
   findProductHistory: async () => {
-    return await ProductModel.find({}, null, {
-      limit: 4
-    })
+    return await ProductModel.aggregate([
+      {
+        $lookup: {
+          from: 'shops',
+          localField: 'shopId',
+          foreignField: '_id',
+          as: 'shopInfo'
+        }
+      }
+    ]).limit(4);
+  },
+  findProductSale: async  () => {
+    return await ProductModel.aggregate([
+      {
+        $lookup: {
+          from: 'shops',
+          localField: 'shopId',
+          foreignField: '_id',
+          as: 'shopInfo'
+        }
+      }
+    ]).sort({sale: -1});
   }
 }
